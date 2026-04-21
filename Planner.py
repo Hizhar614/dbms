@@ -100,7 +100,7 @@ class ProductPlan:
         temp_scan2 = self.plan2.open()
         return ProductScan(temp_scan1, temp_scan2)
 
-     def blocksAccessed(self):
+    def blocksAccessed(self):
         return self.plan1.blocksAccessed() + \
                self.plan1.recordsOutput() * self.plan2.blocksAccessed()
 
