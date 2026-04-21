@@ -100,15 +100,18 @@ class ProductPlan:
         temp_scan2 = self.plan2.open()
         return ProductScan(temp_scan1, temp_scan2)
 
-    def blocksAccessed(self):
-        pass
+     def blocksAccessed(self):
+        return self.plan1.blocksAccessed() + \
+               self.plan1.recordsOutput() * self.plan2.blocksAccessed()
 
     def recordsOutput(self):
-        pass
+        return self.plan1.recordsOutput() * self.plan2.recordsOutput()
 
-    # TODO: Update this once we have distinct values for each column name
     def distinctValues(self, field_name):
-        pass
+        if field_name in self.plan1.plan_schema().field_info:
+            return self.plan1.distinctValues(field_name)
+        else:
+            return self.plan2.distinctValues(field_name)
 
     def plan_schema(self):
         return self.schema
