@@ -144,7 +144,7 @@ class StatMgr:
             ts = TableScan(tx, 'table_catalog', temp_table_catalog_layout)
             while ts.nextRecord():
                 table_name = ts.getString('table_name')
-                table_layout = self.tm.getLayout(tx, 'table_name')
+                table_layout = self.tm.getLayout(tx, table_name)
                 table_stat = self.calcTableStats(tx, table_name, table_layout)
                 self.table_stats[table_name] = table_stat
             ts.closeRecordPage()
