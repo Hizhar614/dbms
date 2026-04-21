@@ -3,7 +3,7 @@ import shutil
 import time
 import random
 import argparse
-
+from solution import BetterQueryPlanner, IndexQueryPlanner, create_indexes
 def main():
     parser = argparse.ArgumentParser(
         description='pySimpleDB Benchmark — Query Optimization & Indexing',
